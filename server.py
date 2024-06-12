@@ -54,6 +54,9 @@ def call_genai_api(context: str, question: str) -> str:
     response = model.generate_content(f"{context}\n\nQ: {question}\nA:")
     return response.text
 
+@app.get('/')
+async def home():
+    return "API working"
 
 @app.post("/uploadfile/")
 async def create_upload_file(file: UploadFile = File(...)):
